@@ -1,0 +1,7 @@
+name: DisplayMount
+version: '${project.version}'
+main: fr.tiltechserv.displaymount.DisplayMount
+api-version: 1.19
+command :
+  vtest:
+

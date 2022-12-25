@@ -2,6 +2,7 @@ package fr.tiltechserv.displaymount;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.security.Permission;
@@ -14,8 +15,8 @@ public final class DisplayMount extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info(ChatColor.GREEN+"enable");
-        getCommand("testss").setExecutor(new TestClassTest());
         Bukkit.getPluginManager().registerEvents(new DisplaySmelterListener(), this);
+        getCommand("warptool").setExecutor(new TestClassTest(this));
 
 
     }

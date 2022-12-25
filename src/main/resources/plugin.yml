@@ -3,6 +3,6 @@ version: '${project.version}'
 main: fr.tiltechserv.displaymount.DisplayMount
 api-version: 1.19
 commands:
-  testss:
-    description: ceci est une commane
+  WARPTOOL:
+    description: ceci est une comande qui donne au joueur une boussole
 

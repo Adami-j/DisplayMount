@@ -25,7 +25,7 @@ public class TestClassTest implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Player player = (Player) commandSender;
-        if(command.getName().contains("warptool")){
+        if(command.getName().equalsIgnoreCase("warptool")){
             PlayerInventory playerInventory = player.getInventory();
             ItemStack itemStack = new ItemStack(Material.COMPASS);
             ItemMeta itemMeta =itemStack.getItemMeta();
@@ -40,7 +40,7 @@ public class TestClassTest implements CommandExecutor {
             return true;
         }
         System.out.println(command.getName());
-        if(command.getName().contains("infolvl")){
+        if(command.getName().equalsIgnoreCase("infolvl")){
 
             player.sendMessage(ChatColor.GREEN+player.getName()+": tu es "+""+" niveau "+""+" tu as "+""+" gold sur ton compte bancaire");
             return true;

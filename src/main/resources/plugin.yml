@@ -3,6 +3,9 @@ version: '${project.version}'
 main: fr.tiltechserv.displaymount.DisplayMount
 api-version: 1.19
 commands:
-  WARPTOOL:
+  warptool:
     description: ceci est une comande qui donne au joueur une boussole
-
+    aliases: [wrp]
+  infolvl:
+    description: cette commande donne ton métier et ton niveau mais aussi ton argent
+    aliases:  [ilv]

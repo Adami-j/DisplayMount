@@ -1,26 +1,18 @@
 package fr.tiltechserv.displaymount;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerPickupArrowEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
+import org.bukkit.scoreboard.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +20,15 @@ import java.util.List;
 public class DisplaySmelterListener implements Listener {
 
 
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getNewScoreboard();
+        Team team = board.registerNewTeam("teamname");
+        team.addPlayer(player);
+        Objective objective = board.registerNewObjective("test", "dummy");
 
 
     }
@@ -49,9 +46,10 @@ public class DisplaySmelterListener implements Listener {
 
 
             List<String> listeMeta = new ArrayList<>();
-           listeMeta.add("spawn");
-           listeMeta.add("jeux");
-           listeMeta.add("building");
+           listeMeta.add("Miner");
+           listeMeta.add("Fighter");
+           listeMeta.add("Farmer");
+           listeMeta.add("Chemist");
 
             for(String s : listeMeta){
                 ItemStack bousole1= new ItemStack(Material.COMPASS);
@@ -71,25 +69,32 @@ public class DisplaySmelterListener implements Listener {
 
     @EventHandler
     public void onBoussoleOpen(InventoryClickEvent event) {
-
-        if(event!=null&& event.getClick().isLeftClick()&&event.getCurrentItem()!=null&&event.getCurrentItem().getItemMeta()!=null &&event.getCurrentItem().getItemMeta().getAsString()!=null){
+        if(event!=null&&event.getClick().isRightClick()){
+            event.getView().close();
+        }
+        if(event!=null&&event.getClick().isLeftClick()&&event.getCurrentItem()!=null&&event.getCurrentItem().getItemMeta()!=null &&event.getCurrentItem().getItemMeta().getAsString()!=null){
             switch (event.getCurrentItem().getItemMeta().getLore().toString()){
-                case "[spawn]" :
-                    System.out.println("spawn");
+                case "[Miner]" :
+                    event.getView().getPlayer().sendMessage("Tu es maintenant un mineur");
+                    event.getView().close();
                     break;
-                case "[jeux]" :
-                    System.out.println("jeux");
+                case "[Fighter]" :
+                    event.getView().getPlayer().sendMessage("Tu es maintenant un combatant");
+                    event.getView().close();
                     break;
-                case "[building]" :
-                    System.out.println("building");
+                case "[Farmer]" :
+                    event.getView().getPlayer().sendMessage("Tu es maintenant un fermier");
+                    event.getView().close();
                     break;
-                default:
-                    System.out.println("marche po");
+                case "[Chemist]":
+                    event.getView().getPlayer().sendMessage("Tu es maintenant un chimiste");
+                    event.getView().close();
                     break;
             }
         }
 
     }
+
     }
 
 

@@ -24,11 +24,7 @@ public class DisplaySmelterListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-        ScoreboardManager manager = Bukkit.getScoreboardManager();
-        Scoreboard board = manager.getNewScoreboard();
-        Team team = board.registerNewTeam("teamname");
-        team.addPlayer(player);
-        Objective objective = board.registerNewObjective("test", "dummy");
+
 
 
     }

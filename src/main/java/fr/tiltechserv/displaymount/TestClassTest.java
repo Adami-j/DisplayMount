@@ -25,7 +25,7 @@ public class TestClassTest implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Player player = (Player) commandSender;
-        if(command.getName()=="warptool"){
+        if(command.getName().contains("warptool")){
             PlayerInventory playerInventory = player.getInventory();
             ItemStack itemStack = new ItemStack(Material.COMPASS);
             ItemMeta itemMeta =itemStack.getItemMeta();
@@ -37,25 +37,16 @@ public class TestClassTest implements CommandExecutor {
 
             System.out.println(commandSender+" "+command+" "+strings);
 
-            if(command.getName()=="warptool"){
-                player.sendMessage("ça arrive");
-                commandSender.sendMessage("cc");
-            }
             return true;
         }
+        System.out.println(command.getName());
+        if(command.getName().contains("infolvl")){
 
+            player.sendMessage(ChatColor.GREEN+player.getName()+": tu es "+""+" niveau "+""+" tu as "+""+" gold sur ton compte bancaire");
+            return true;
+        }
             return false;
 
     }
 
-
-
-    public boolean onCommandIvl(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(command.getName()=="infolvl"){
-            Player player = (Player) commandSender;
-            player.sendMessage(ChatColor.GREEN+player.getName()+": tu es "+""+" niveau "+""+" tu as "+""+" gold sur ton compte bancaire");
-            return true;
-        }
-        return false;
-    }
 }
